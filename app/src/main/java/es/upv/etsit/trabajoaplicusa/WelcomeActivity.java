@@ -3,10 +3,11 @@ package es.upv.etsit.trabajoaplicusa;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
-    private Button enterevento;
+    private Button btnEnterEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,12 +19,11 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        enterevento = findViewById(R.id.enter_evento);
-
+        btnEnterEvent = findViewById(R.id.enter_evento);
     }
 
     private void setupClickListeners() {
-        enterevento.setOnClickListener(v -> {
+        btnEnterEvent.setOnClickListener(v -> {
             Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
