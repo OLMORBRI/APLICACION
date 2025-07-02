@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">Trabajo APLICUSA</string>
+    <string name="app_name">Festival Verano 2025</string>
+    <string name="welcome_titulo">SIGNAL FEST 2025</string>
+    <string name="Fecha">15_17 Agosto 2025</string>
+    <string name="enter_evento">ENTRAR AL EVENTO</string>
+
+    <!-- Secciones -->
+    <string name="section_artists">ARTISTAS</string>
+    <string name="section_schedule">HORARIOS</string>
+    <string name="section_venue">LUGAR</string>
+    <string name="section_tickets">ENTRADAS</string>
+    <string name="section_info">INFORMACIÓN</string>
+
+    <!-- Descripciones -->
+    <string name="artists_description">Descubre el increíble lineup con los mejores artistas nacionales e internacionales</string>
+    <string name="schedule_description">Consulta la programación completa del festival y no te pierdas ningún concierto</string>
+    <string name="venue_description">Toda la información sobre la ubicación, cómo llegar y servicios disponibles</string>
+    <string name="tickets_description">Compra tus entradas y elige entre diferentes tipos de pases disponibles</string>
+    <string name="info_description">Normativa, contacto, preguntas frecuentes y toda la información adicional</string>
+
+    <!-- Botones -->
+    <string name="btn_see_artists">VER ARTISTAS</string>
+    <string name="btn_see_schedule">VER HORARIOS</string>
+    <string name="btn_see_venue">VER UBICACIÓN</string>
+    <string name="btn_buy_tickets">COMPRAR ENTRADAS</string>
+    <string name="btn_more_info">MÁS INFO</string>
 </resources>
