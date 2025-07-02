@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Festival Verano 2025</string>
     <string name="welcome_titulo">SIGNAL FEST 2025</string>
-    <string name="Fecha">15_17 Agosto 2025</string>
-    <string name="enter_evento">ENTRAR AL EVENTO</string>
+    <string name="Fecha">15 al 17 Agosto 2025</string>
+    <string name="enter_evento">ENTRAR</string>
+    <string name="eslogan">CONNECTED WITH YOUR SOUL</string>
 
     <!-- Secciones -->
     <string name="section_artists">ARTISTAS</string>
