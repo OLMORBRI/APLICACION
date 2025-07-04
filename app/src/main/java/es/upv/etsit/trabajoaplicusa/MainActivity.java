@@ -1,19 +1,16 @@
 package es.upv.etsit.trabajoaplicusa;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView tvEventTitle, tvEventEslogan;
     private Button btnmadcool, btnprimavera, btnarenal, btnviña, btnresurrect;
     private Toolbar toolbar;
 
@@ -24,14 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
         initViews();
         setupToolbar();
-        setupEventInfo();
         setupClickListeners();
     }
 
     private void initViews() {
         toolbar = findViewById(R.id.toolbar);
-        tvEventTitle = findViewById(R.id.tvEventTitle);
-        tvEventEslogan = findViewById(R.id.eslogan);
         btnmadcool = findViewById(R.id.btnmadcool);
         btnprimavera = findViewById(R.id.btnprimavera);
         btnviña = findViewById(R.id.btnviña);
@@ -44,11 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    @SuppressLint("SetTextI18n")
-    private void setupEventInfo() {
-        tvEventTitle.setText("FESTIVAL DE VERANO 2025");
-        tvEventEslogan.setText("Connected with your soul");
-    }
+
 
     private void setupClickListeners() {
         btnmadcool.setOnClickListener(v -> openSection("mad_cool"));

@@ -44,8 +44,26 @@
     <string name="btn_evento4">¡A ROCKEAR!</string>
     <string name="btn_evento5">VER EVENTO</string>
 
-    <!-- Descrpciones -->
-    <string name="artistas_descrip">Aqui podrás encontrar a tu artista favorito y ver en que proximos eventos tendrá aparición</string>
+    <!-- Strings para artistas -->
+    <string name="artistas_descrip">Descubre nuestros increíbles artistas</string>
+
+    <!-- Strings para festivales -->
+    <string name="mad_cool_title">Mad Cool Festival</string>
+    <string name="primavera_sound_title">Primavera Sound</string>
+    <string name="arenal_sound_title">Arenal Sound</string>
+    <string name="vina_rock_title">Viña Rock</string>
+    <string name="resurrection_title">Resurrection Fest</string>
+
+    <!-- Strings para eventos -->
+    <string name="eventos_title">Eventos</string>
+    <string name="eventos_artista_title">Eventos del Artista</string>
+    <string name="sin_eventos">No hay eventos programados</string>
+
+    <!-- Strings generales -->
+    <string name="fecha">Fecha:</string>
+    <string name="hora">Hora:</string>
+    <string name="lugar">Lugar:</string>
+    <string name="descripcion">Descripción:</string>
 
     <!-- content descriptions -->
     <string name="logo_app">ES EL LOGO</string>

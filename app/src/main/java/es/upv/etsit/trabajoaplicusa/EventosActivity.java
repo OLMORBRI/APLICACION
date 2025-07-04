@@ -1,0 +1,195 @@
+package es.upv.etsit.trabajoaplicusa;
+
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import es.upv.etsit.trabajoaplicusa.adapters.SectionContentAdapter;
+import es.upv.etsit.trabajoaplicusa.models.SectionContent;
+import java.util.ArrayList;
+import java.util.List;
+
+public class EventosActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
+    private ImageView ivArtistImage;
+    private TextView tvArtistName, tvArtistDescription, tvEventsTitle;
+    private RecyclerView recyclerViewEvents;
+    private SectionContentAdapter adapter;
+
+    private String artistName;
+    private String artistDescription;
+    private String artistImage;
+    private String festivalSection;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_eventos);
+
+        getIntentData();
+        initViews();
+        setupToolbar();
+        loadArtistInfo();
+        loadArtistEvents();
+    }
+
+    private void getIntentData() {
+        artistName = getIntent().getStringExtra("artist_name");
+        artistDescription = getIntent().getStringExtra("artist_description");
+        artistImage = getIntent().getStringExtra("artist_image");
+        festivalSection = getIntent().getStringExtra("festival_section");
+    }
+
+    private void initViews() {
+        toolbar = findViewById(R.id.toolbar);
+        ivArtistImage = findViewById(R.id.ivArtistImage);
+        tvArtistName = findViewById(R.id.tvArtistName);
+        tvArtistDescription = findViewById(R.id.tvArtistDescription);
+        tvEventsTitle = findViewById(R.id.tvEventsTitle);
+        recyclerViewEvents = findViewById(R.id.recyclerViewEvents);
+
+        recyclerViewEvents.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void setupToolbar() {
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setTitle(artistName != null ? artistName : "Eventos del Artista");
+        }
+    }
+
+    private void loadArtistInfo() {
+        if (artistName != null) {
+            tvArtistName.setText(artistName);
+        }
+
+        if (artistDescription != null) {
+            tvArtistDescription.setText(artistDescription);
+        }
+
+        if (artistImage != null && !artistImage.isEmpty()) {
+            ivArtistImage.setVisibility(ImageView.VISIBLE);
+            if (artistImage.startsWith("drawable/")) {
+                String drawableName = artistImage.replace("drawable/", "");
+                int resourceId = getResources().getIdentifier(drawableName, "drawable", getPackageName());
+                if (resourceId != 0) {
+                    ivArtistImage.setImageResource(resourceId);
+                }
+            }
+        } else {
+            ivArtistImage.setVisibility(ImageView.GONE);
+        }
+    }
+
+    private void loadArtistEvents() {
+        List<SectionContent> eventsList = createEventsList(artistName, festivalSection);
+
+        adapter = new SectionContentAdapter(eventsList);
+        recyclerViewEvents.setAdapter(adapter);
+
+        tvEventsTitle.setText("Eventos de " + (artistName != null ? artistName : "este artista"));
+    }
+
+    private List<SectionContent> createEventsList(String artist, String festival) {
+        List<SectionContent> events = new ArrayList<>();
+
+        if (artist == null) artist = "Artista";
+
+        switch (festival != null ? festival : "artistas") {
+            case "mad_cool":
+                events.add(new SectionContent(
+                        "Mad Cool Festival 2025",
+                        "Actuación principal en el escenario Madrid\nFecha: 15 de Julio 2025\nHora: 22:00",
+                        "drawable/mad_cool_stage"
+                ));
+                events.add(new SectionContent(
+                        "Meet & Greet",
+                        "Encuentro con fans antes del concierto\nFecha: 15 de Julio 2025\nHora: 19:00",
+                        "drawable/meet_greet"
+                ));
+                break;
+
+            case "primavera_sound":
+                events.add(new SectionContent(
+                        "Primavera Sound 2025",
+                        "Concierto en el escenario Parc del Fòrum\nFecha: 3 de Junio 2025\nHora: 23:30",
+                        "drawable/primavera_stage"
+                ));
+                events.add(new SectionContent(
+                        "Sesión Acústica",
+                        "Versión íntima de sus mejores temas\nFecha: 4 de Junio 2025\nHora: 16:00",
+                        "drawable/acoustic_session"
+                ));
+                break;
+
+            case "arenal_sound":
+                events.add(new SectionContent(
+                        "Arenal Sound 2025",
+                        "Headliner en la playa de Burriana\nFecha: 30 de Julio 2025\nHora: 01:00",
+                        "drawable/arenal_stage"
+                ));
+                break;
+
+            case "viña_rock":
+                events.add(new SectionContent(
+                        "Viña Rock 2025",
+                        "Concierto en el escenario principal\nFecha: 1 de Mayo 2025\nHora: 22:30",
+                        "drawable/vina_stage"
+                ));
+                events.add(new SectionContent(
+                        "Firma de Autógrafos",
+                        "Sesión de firmas en la tienda oficial\nFecha: 2 de Mayo 2025\nHora: 12:00",
+                        "drawable/autograph_session"
+                ));
+                break;
+
+            case "resurrection":
+                events.add(new SectionContent(
+                        "Resurrection Fest 2025",
+                        "Actuación épica en el escenario principal\nFecha: 25 de Junio 2025\nHora: 23:00",
+                        "drawable/resurrection_stage"
+                ));
+                events.add(new SectionContent(
+                        "Masterclass",
+                        "Clase magistral sobre técnicas de metal\nFecha: 26 de Junio 2025\nHora: 14:00",
+                        "drawable/masterclass"
+                ));
+                break;
+
+            default:
+                // Eventos genéricos para artistas
+                events.add(new SectionContent(
+                        "Concierto Principal",
+                        "Actuación principal del artista\nFecha: Por confirmar\nHora: Por confirmar",
+                        "drawable/concert_stage"
+                ));
+                events.add(new SectionContent(
+                        "Rueda de Prensa",
+                        "Entrevistas y declaraciones\nFecha: Por confirmar\nHora: Por confirmar",
+                        "drawable/press_conference"
+                ));
+                break;
+        }
+
+        // Añadir eventos adicionales comunes
+        events.add(new SectionContent(
+                "Entrevista Exclusiva",
+                "Charla íntima con el artista\nPrensa especializada\nAcceso VIP requerido",
+                "drawable/interview"
+        ));
+
+        return events;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+}
