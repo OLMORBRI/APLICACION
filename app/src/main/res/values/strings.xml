@@ -1,0 +1,72 @@
+<resources>
+    <!-- Welcome -->
+    <string name="app_name">Festival Verano 2025</string>
+    <string name="welcome_titulo">SIGNAL FEST 2025</string>
+    <string name="Fecha">15 al 17 Agosto 2025</string>
+    <string name="enter_evento">ENTRAR</string>
+    <string name="eslogan">CONNECTED WITH YOUR SOUL</string>
+
+    <!-- Eventos -->
+    <string name="madcool">MAD COOL FESTIVAL</string>
+    <string name="primavera">PRIMAVERA SOUND</string>
+    <string name="resurrection">RESURRECTION FEST</string>
+    <string name="viñarock">VIÑA ROCK</string>
+    <string name="arenal">ARENAL SOUND</string>
+
+    <!-- Lugares -->
+    <string name="mad_loc">Madrid, Villaverde</string>
+    <string name="primavera_loc">Barcelona, Parc del Forum</string>
+    <string name="resurrection_loc">Galicia, Viveiro</string>
+    <string name="viña_loc">Albacete, Villarobledo</string>
+    <string name="arenal_loc">Castellón, Burriana</string>
+
+    <!-- Fechas -->
+    <string name="mad_date">10 - 13 Julio, 2025</string>
+    <string name="primavera_date">4 - 6 Junio, 2026</string>
+    <string name="resurrection_date">1 - 4 Julio, 2026</string>
+    <string name="viña_date">30 Abril - 2 Mayo, 2026</string>
+    <string name="arenal_date">30 Julio - 3 Agosto, 2025</string>
+
+    <!-- Menu -->
+    <string name="eventos">EVENTOS</string>
+    <string name="artistas">ARTISTAS</string>
+    <string name="lugares">LUGARES</string>
+    <string name="entradas">ENTRADAS</string>
+
+    <!-- Botones -->
+    <string name="btn_see_artists">VER ARTISTAS</string>
+    <string name="btn_see_schedule">VER HORARIOS</string>
+    <string name="btn_buy_tickets">COMPRAR ENTRADAS</string>
+    <string name="btn_more_info">MÁS INFO</string>
+    <string name="btn_evento1">¡ENTRA YA!</string>
+    <string name="btn_evento2">¿QUIERES SABER MAS?</string>
+    <string name="btn_evento3">¡NO TE LO PIERDAS!</string>
+    <string name="btn_evento4">¡A ROCKEAR!</string>
+    <string name="btn_evento5">VER EVENTO</string>
+
+    <!-- Strings para artistas -->
+    <string name="artistas_descrip">Descubre nuestros increíbles artistas</string>
+
+    <!-- Strings para festivales -->
+    <string name="mad_cool_title">Mad Cool Festival</string>
+    <string name="primavera_sound_title">Primavera Sound</string>
+    <string name="arenal_sound_title">Arenal Sound</string>
+    <string name="vina_rock_title">Viña Rock</string>
+    <string name="resurrection_title">Resurrection Fest</string>
+
+    <!-- Strings para eventos -->
+    <string name="eventos_title">Eventos</string>
+    <string name="eventos_artista_title">Eventos del Artista</string>
+    <string name="sin_eventos">No hay eventos programados</string>
+
+    <!-- Strings generales -->
+    <string name="fecha">Fecha:</string>
+    <string name="hora">Hora:</string>
+    <string name="lugar">Lugar:</string>
+    <string name="descripcion">Descripción:</string>
+
+    <!-- content descriptions -->
+    <string name="logo_app">ES EL LOGO</string>
+
+
+</resources>
