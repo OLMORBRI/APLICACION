@@ -153,14 +153,14 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
 
             case "artistas":
             default:
-                artists.add(new SectionContent("Arctic Monkeys", "Mad Cool Festival - Rock alternativo", "drawable/arctic_monkeys"));
-                artists.add(new SectionContent("Rosalía", "Primavera Sound - Flamenco urbano", "drawable/rosalia"));
-                artists.add(new SectionContent("C. Tangana", "Arenal Sound - Hip hop español", "drawable/c_tangana"));
-                artists.add(new SectionContent("Mägo de Oz", "Viña Rock - Folk metal", "drawable/mago_de_oz"));
-                artists.add(new SectionContent("Metallica", "Resurrection Fest - Heavy metal", "drawable/metallica"));
-                artists.add(new SectionContent("Billie Eilish", "Mad Cool Festival - Pop alternativo", "drawable/billie_eilish"));
-                artists.add(new SectionContent("Bad Bunny", "Primavera Sound - Reggaeton", "drawable/bad_bunny"));
-                artists.add(new SectionContent("Vetusta Morla", "Arenal Sound - Rock español", "drawable/vetusta_morla"));
+                // Mostrar todos los artistas de todos los festivales
+                artists.addAll(createArtistsList("mad_cool"));
+                artists.addAll(createArtistsList("primavera_sound"));
+                artists.addAll(createArtistsList("arenal_sound"));
+                artists.addAll(createArtistsList("viña_rock"));
+                artists.addAll(createArtistsList("resurrection"));
+                // Ordenar alfabéticamente por nombre de artista
+                java.util.Collections.sort(artists, (a, b) -> a.getTitle().compareToIgnoreCase(b.getTitle()));
                 break;
         }
 
