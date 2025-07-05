@@ -49,8 +49,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openSection(String section) {
-        Intent intent = new Intent(this, ArtistasActivity.class);
-        intent.putExtra("section", section);
+        Intent intent;
+        switch (section) {
+            case "eventos":
+                intent = new Intent(this, EventosActivity.class);
+                break;
+            case "tickets":
+                intent = new Intent(this, EntradasActivity.class);
+                break;
+            case "lugares":
+                intent = new Intent(this, LugaresActivity.class);
+                break;
+            default:
+                intent = new Intent(this, ArtistasActivity.class);
+                intent.putExtra("section", section);
+                break;
+        }
         startActivity(intent);
     }
 
