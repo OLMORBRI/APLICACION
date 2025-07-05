@@ -33,6 +33,11 @@
     <string name="lugares">LUGARES</string>
     <string name="entradas">ENTRADAS</string>
 
+    <string name="entradas_title">Entradas</string>
+    <string name="entradas_msg">Compra tus entradas</string>
+    <string name="lugares_title">Lugares</string>
+    <string name="lugares_msg">Consulta los recintos</string>
+
     <!-- Botones -->
     <string name="btn_see_artists">VER ARTISTAS</string>
     <string name="btn_see_schedule">VER HORARIOS</string>
