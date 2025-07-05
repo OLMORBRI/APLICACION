@@ -68,5 +68,9 @@
     <!-- content descriptions -->
     <string name="logo_app">ES EL LOGO</string>
 
+    <!-- Drawer strings -->
+    <string name="navigation_drawer_open">Abrir menú</string>
+    <string name="navigation_drawer_close">Cerrar menú</string>
+
 
 </resources>
