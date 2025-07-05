@@ -19,6 +19,25 @@
 
 
         <activity
+            android:name=".ArtistasActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".WelcomeActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".EntradasActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".LugaresActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
