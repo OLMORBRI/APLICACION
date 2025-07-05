@@ -1,7 +1,10 @@
 package es.upv.etsit.trabajoaplicusa;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +20,7 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
 
     private Toolbar toolbar;
     private TextView tvSectionTitle, tvSectionDescription;
+    private ImageButton btnFestivalLink;
     private RecyclerView recyclerViewContent;
     private SectionContentAdapter adapter;
     private String currentSection;
@@ -37,9 +41,53 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
         toolbar = findViewById(R.id.toolbar);
         tvSectionTitle = findViewById(R.id.tituloArtistas);
         tvSectionDescription = findViewById(R.id.eslogan);
+        btnFestivalLink = findViewById(R.id.btnFestivalLink);
         recyclerViewContent = findViewById(R.id.recyclerViewContent);
 
         recyclerViewContent.setLayoutManager(new LinearLayoutManager(this));
+        setupFestivalLink();
+    }
+
+    private void setupFestivalLink() {
+        int imageRes = 0;
+        String url = null;
+
+        if (currentSection != null) {
+            switch (currentSection) {
+                case "mad_cool":
+                    imageRes = getResources().getIdentifier("mad_cool_foto", "drawable", getPackageName());
+                    url = "https://madcoolfestival.es/";
+                    break;
+                case "primavera_sound":
+                    imageRes = getResources().getIdentifier("primavera_foto", "drawable", getPackageName());
+                    url = "https://www.primaverasound.com/";
+                    break;
+                case "arenal_sound":
+                    imageRes = getResources().getIdentifier("arenal_foto", "drawable", getPackageName());
+                    url = "https://www.arenalsound.com/";
+                    break;
+                case "viña_rock":
+                    imageRes = getResources().getIdentifier("vina_foto", "drawable", getPackageName());
+                    url = "https://www.vinarock.com/";
+                    break;
+                case "resurrection":
+                    imageRes = getResources().getIdentifier("resurrection_foto", "drawable", getPackageName());
+                    url = "https://www.resurrectionfest.es/";
+                    break;
+            }
+        }
+
+        if (imageRes != 0 && url != null) {
+            btnFestivalLink.setImageResource(imageRes);
+            btnFestivalLink.setVisibility(View.VISIBLE);
+            String finalUrl = url;
+            btnFestivalLink.setOnClickListener(v -> {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(finalUrl));
+                startActivity(browserIntent);
+            });
+        } else {
+            btnFestivalLink.setVisibility(View.GONE);
+        }
     }
 
     private void setupToolbar() {
