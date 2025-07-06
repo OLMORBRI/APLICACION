@@ -58,23 +58,23 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
         if (currentSection != null) {
             switch (currentSection) {
                 case "mad_cool":
-                    imageRes = getResources().getIdentifier("mad_cool_foto", "drawable", getPackageName());
+                    imageRes = getResources().getIdentifier("mad_cool", "drawable", getPackageName());
                     url = "https://madcoolfestival.es/";
                     break;
                 case "primavera_sound":
-                    imageRes = getResources().getIdentifier("primavera_foto", "drawable", getPackageName());
+                    imageRes = getResources().getIdentifier("primavera_sound", "drawable", getPackageName());
                     url = "https://www.primaverasound.com/";
                     break;
                 case "arenal_sound":
-                    imageRes = getResources().getIdentifier("arenal_foto", "drawable", getPackageName());
+                    imageRes = getResources().getIdentifier("arenal_sound", "drawable", getPackageName());
                     url = "https://www.arenalsound.com/";
                     break;
                 case "viña_rock":
-                    imageRes = getResources().getIdentifier("vina_foto", "drawable", getPackageName());
+                    imageRes = getResources().getIdentifier("vina_rock", "drawable", getPackageName());
                     url = "https://www.vinarock.com/";
                     break;
                 case "resurrection":
-                    imageRes = getResources().getIdentifier("resurrection_foto", "drawable", getPackageName());
+                    imageRes = getResources().getIdentifier("resurrection", "drawable", getPackageName());
                     url = "https://www.resurrectionfest.es/";
                     break;
             }

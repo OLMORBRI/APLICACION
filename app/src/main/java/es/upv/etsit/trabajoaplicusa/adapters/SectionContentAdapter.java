@@ -15,6 +15,7 @@ public class SectionContentAdapter extends RecyclerView.Adapter<SectionContentAd
 
     private List<SectionContent> contentList;
     private OnItemClickListener listener;
+    private String contentType; // "artistas", "entradas", etc.
 
     public interface OnItemClickListener {
         void onItemClick(SectionContent content, int position);
@@ -22,6 +23,18 @@ public class SectionContentAdapter extends RecyclerView.Adapter<SectionContentAd
 
     public SectionContentAdapter(List<SectionContent> contentList) {
         this.contentList = contentList;
+        this.contentType = "default";
+    }
+
+    public SectionContentAdapter(List<SectionContent> contentList, String contentType) {
+        this.contentList = contentList;
+        this.contentType = contentType;
+    }
+
+    public SectionContentAdapter(List<SectionContent> contentList, OnItemClickListener listener, String contentType) {
+        this.contentList = contentList;
+        this.listener = listener;
+        this.contentType = contentType;
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -53,13 +66,14 @@ public class SectionContentAdapter extends RecyclerView.Adapter<SectionContentAd
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvDescription;
+        TextView tvTitle, tvDescription, tvExtraInfo;
         ImageView ivImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvContentTitle);
             tvDescription = itemView.findViewById(R.id.tvContentDescription);
+            tvExtraInfo = itemView.findViewById(R.id.tvContentExtraInfo); // TextView adicional para precio, género, etc.
             ivImage = itemView.findViewById(R.id.ivContentImage);
 
             itemView.setOnClickListener(v -> {
@@ -73,6 +87,28 @@ public class SectionContentAdapter extends RecyclerView.Adapter<SectionContentAd
             tvTitle.setText(content.getTitle());
             tvDescription.setText(content.getDescription());
 
+            if (tvExtraInfo != null) {
+                if (content.getExtraInfo() != null && !content.getExtraInfo().isEmpty()) {
+                    tvExtraInfo.setVisibility(View.VISIBLE);
+
+                    switch (contentType) {
+                        case "entradas":
+                            tvExtraInfo.setText(content.getExtraInfo()); // Precio
+                            tvExtraInfo.setTextColor(itemView.getContext().getResources().getColor(R.color.accent, null));
+                            break;
+                        case "artistas":
+                            tvExtraInfo.setText(content.getExtraInfo()); // Género musical
+                            tvExtraInfo.setTextColor(itemView.getContext().getResources().getColor(R.color.text_secondary, null));
+                            break;
+                        default:
+                            tvExtraInfo.setText(content.getExtraInfo());
+                            break;
+                    }
+                } else {
+                    tvExtraInfo.setVisibility(View.GONE);
+                }
+            }
+
             if (content.getImageUrl() != null && !content.getImageUrl().isEmpty()) {
                 ivImage.setVisibility(View.VISIBLE);
 
@@ -82,10 +118,28 @@ public class SectionContentAdapter extends RecyclerView.Adapter<SectionContentAd
                             .getIdentifier(drawableName, "drawable", itemView.getContext().getPackageName());
                     if (resourceId != 0) {
                         ivImage.setImageResource(resourceId);
+                    } else {
+                        setDefaultImage();
                     }
+                } else {
+                    setDefaultImage();
                 }
             } else {
-                ivImage.setVisibility(View.GONE);
+                setDefaultImage();
+            }
+        }
+
+        private void setDefaultImage() {
+            switch (contentType) {
+                case "entradas":
+                    ivImage.setImageResource(R.drawable.ic_festival);
+                    break;
+                case "artistas":
+                    ivImage.setImageResource(R.drawable.ic_artista);
+                    break;
+                default:
+                    ivImage.setImageResource(R.drawable.ic_default);
+                    break;
             }
         }
     }

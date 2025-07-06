@@ -1,42 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="12dp"
     app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="16dp">
 
+        <!-- Imagen -->
         <ImageView
             android:id="@+id/ivContentImage"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="12dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/card_background"
             android:scaleType="centerCrop"
-            android:visibility="gone" />
+            android:src="@drawable/ic_default" />
 
-        <TextView
-            android:id="@+id/tvContentTitle"
-            android:layout_width="match_parent"
+        <!-- Contenido de texto -->
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginBottom="8dp" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvContentDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:lineSpacingExtra="2dp" />
+            <!-- Título -->
+            <TextView
+                android:id="@+id/tvContentTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Título del contenido"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <!-- Descripción -->
+            <TextView
+                android:id="@+id/tvContentDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Descripción del contenido"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <!-- Información extra (precio, género, etc.) -->
+            <TextView
+                android:id="@+id/tvContentExtraInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Info extra"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_extra_info"
+                android:padding="6dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Indicador de acción -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_flecha"
+            android:tint="@color/text_secondary" />
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

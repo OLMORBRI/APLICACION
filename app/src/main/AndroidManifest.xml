@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/mi_icono"
+        android:icon="@drawable/nextup_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/mi_icono_redondo"
+        android:roundIcon="@drawable/nextup_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.TrabajoAPLICUSA"
         tools:targetApi="31">
