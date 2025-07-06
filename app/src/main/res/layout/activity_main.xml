@@ -247,7 +247,7 @@
                         android:layout_marginBottom="12dp" />
 
                     <Button
-                        android:id="@+id/btnviña"
+                        android:id="@+id/btn_vina"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/btn_evento4"
