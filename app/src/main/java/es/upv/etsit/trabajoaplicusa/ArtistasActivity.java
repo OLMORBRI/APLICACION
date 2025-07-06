@@ -1,9 +1,13 @@
 package es.upv.etsit.trabajoaplicusa;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,9 +21,12 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
 
     private Toolbar toolbar;
     private TextView tvSectionTitle, tvSectionDescription;
+    private ImageButton btnFestivalLink;
     private RecyclerView recyclerViewContent;
     private SectionContentAdapter adapter;
     private String currentSection;
+    private SearchView searchView;
+    private List<SectionContent> originalContentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +44,53 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
         toolbar = findViewById(R.id.toolbar);
         tvSectionTitle = findViewById(R.id.tituloArtistas);
         tvSectionDescription = findViewById(R.id.eslogan);
+        btnFestivalLink = findViewById(R.id.btnFestivalLink);
         recyclerViewContent = findViewById(R.id.recyclerViewContent);
-
+        searchView = findViewById(R.id.searchViewArtists);
         recyclerViewContent.setLayoutManager(new LinearLayoutManager(this));
+        setupFestivalLink();
+    }
+
+    private void setupFestivalLink() {
+        int imageRes = 0;
+        String url = null;
+
+        if (currentSection != null) {
+            switch (currentSection) {
+                case "mad_cool":
+                    imageRes = getResources().getIdentifier("mad_cool_foto", "drawable", getPackageName());
+                    url = "https://madcoolfestival.es/";
+                    break;
+                case "primavera_sound":
+                    imageRes = getResources().getIdentifier("primavera_foto", "drawable", getPackageName());
+                    url = "https://www.primaverasound.com/";
+                    break;
+                case "arenal_sound":
+                    imageRes = getResources().getIdentifier("arenal_foto", "drawable", getPackageName());
+                    url = "https://www.arenalsound.com/";
+                    break;
+                case "viña_rock":
+                    imageRes = getResources().getIdentifier("vina_foto", "drawable", getPackageName());
+                    url = "https://www.vinarock.com/";
+                    break;
+                case "resurrection":
+                    imageRes = getResources().getIdentifier("resurrection_foto", "drawable", getPackageName());
+                    url = "https://www.resurrectionfest.es/";
+                    break;
+            }
+        }
+
+        if (imageRes != 0 && url != null) {
+            btnFestivalLink.setImageResource(imageRes);
+            btnFestivalLink.setVisibility(View.VISIBLE);
+            String finalUrl = url;
+            btnFestivalLink.setOnClickListener(v -> {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(finalUrl));
+                startActivity(browserIntent);
+            });
+        } else {
+            btnFestivalLink.setVisibility(View.GONE);
+        }
     }
 
     private void setupToolbar() {
@@ -76,17 +127,34 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
 
     private void loadSectionContent() {
         List<SectionContent> contentList = createArtistsList(currentSection);
-
+        originalContentList = new ArrayList<>(contentList);
         adapter = new SectionContentAdapter(contentList);
         adapter.setOnItemClickListener(this);
         recyclerViewContent.setAdapter(adapter);
 
+        setupSearch();
         updateSectionDescription(currentSection);
     }
 
     private void updateSectionDescription(String section) {
         String description = getSectionDescription(section);
         tvSectionDescription.setText(description);
+    }
+
+    private void setupSearch() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterArtists(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterArtists(newText);
+                return true;
+            }
+        });
     }
 
     private String getSectionDescription(String section) {
@@ -153,18 +221,29 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
 
             case "artistas":
             default:
-                artists.add(new SectionContent("Arctic Monkeys", "Mad Cool Festival - Rock alternativo", "drawable/arctic_monkeys"));
-                artists.add(new SectionContent("Rosalía", "Primavera Sound - Flamenco urbano", "drawable/rosalia"));
-                artists.add(new SectionContent("C. Tangana", "Arenal Sound - Hip hop español", "drawable/c_tangana"));
-                artists.add(new SectionContent("Mägo de Oz", "Viña Rock - Folk metal", "drawable/mago_de_oz"));
-                artists.add(new SectionContent("Metallica", "Resurrection Fest - Heavy metal", "drawable/metallica"));
-                artists.add(new SectionContent("Billie Eilish", "Mad Cool Festival - Pop alternativo", "drawable/billie_eilish"));
-                artists.add(new SectionContent("Bad Bunny", "Primavera Sound - Reggaeton", "drawable/bad_bunny"));
-                artists.add(new SectionContent("Vetusta Morla", "Arenal Sound - Rock español", "drawable/vetusta_morla"));
+                artists.addAll(createArtistsList("mad_cool"));
+                artists.addAll(createArtistsList("primavera_sound"));
+                artists.addAll(createArtistsList("arenal_sound"));
+                artists.addAll(createArtistsList("viña_rock"));
+                artists.addAll(createArtistsList("resurrection"));
+                // Ordenar alfabéticamente por nombre de artista
+                java.util.Collections.sort(artists, (a, b) -> a.getTitle().compareToIgnoreCase(b.getTitle()));
                 break;
         }
 
         return artists;
+    }
+
+    private void filterArtists(String query) {
+        if (originalContentList == null) return;
+
+        List<SectionContent> filtered = new ArrayList<>();
+        for (SectionContent sc : originalContentList) {
+            if (sc.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                filtered.add(sc);
+            }
+        }
+        adapter.updateData(filtered);
     }
 
     @Override

@@ -14,7 +14,7 @@
         android:layout_height="292dp"
         android:layout_marginTop="164dp"
         android:contentDescription="@string/logo_app"
-        android:src="@drawable/logotyperedondo"
+        android:src="@drawable/mi_icono_redondo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
