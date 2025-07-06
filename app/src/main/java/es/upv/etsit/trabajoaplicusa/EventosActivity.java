@@ -112,11 +112,6 @@ public class EventosActivity extends AppCompatActivity {
                         "Actuación principal en el escenario Madrid\nFecha: 15 de Julio 2025\nHora: 22:00",
                         "drawable/mad_cool"
                 ));
-                events.add(new SectionContent(
-                        "Meet & Greet",
-                        "Encuentro con fans antes del concierto\nFecha: 15 de Julio 2025\nHora: 19:00",
-                        "drawable/meet_greet"
-                ));
                 break;
 
             case "primavera_sound":
@@ -124,11 +119,6 @@ public class EventosActivity extends AppCompatActivity {
                         "Primavera Sound 2025",
                         "Concierto en el escenario Parc del Fòrum\nFecha: 3 de Junio 2025\nHora: 23:30",
                         "drawable/primavera_sound"
-                ));
-                events.add(new SectionContent(
-                        "Sesión Acústica",
-                        "Versión íntima de sus mejores temas\nFecha: 4 de Junio 2025\nHora: 16:00",
-                        "drawable/acoustic_session"
                 ));
                 break;
 
@@ -146,11 +136,6 @@ public class EventosActivity extends AppCompatActivity {
                         "Concierto en el escenario principal\nFecha: 1 de Mayo 2025\nHora: 22:30",
                         "drawable/vina_rock"
                 ));
-                events.add(new SectionContent(
-                        "Firma de Autógrafos",
-                        "Sesión de firmas en la tienda oficial\nFecha: 2 de Mayo 2025\nHora: 12:00",
-                        "drawable/autograph_session"
-                ));
                 break;
 
             case "resurrection":
@@ -159,34 +144,16 @@ public class EventosActivity extends AppCompatActivity {
                         "Actuación épica en el escenario principal\nFecha: 25 de Junio 2025\nHora: 23:00",
                         "drawable/resurrection"
                 ));
-                events.add(new SectionContent(
-                        "Masterclass",
-                        "Clase magistral sobre técnicas de metal\nFecha: 26 de Junio 2025\nHora: 14:00",
-                        "drawable/masterclass"
-                ));
                 break;
 
             default:
-                // Eventos genéricos para artistas
                 events.add(new SectionContent(
                         "Concierto Principal",
                         "Actuación principal del artista\nFecha: Por confirmar\nHora: Por confirmar",
                         "drawable/concert_stage"
                 ));
-                events.add(new SectionContent(
-                        "Rueda de Prensa",
-                        "Entrevistas y declaraciones\nFecha: Por confirmar\nHora: Por confirmar",
-                        "drawable/press_conference"
-                ));
                 break;
         }
-
-        // Añadir eventos adicionales comunes
-        events.add(new SectionContent(
-                "Entrevista Exclusiva",
-                "Charla íntima con el artista\nPrensa especializada\nAcceso VIP requerido",
-                "drawable/interview"
-        ));
 
         return events;
     }

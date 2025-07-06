@@ -9,9 +9,6 @@
         android:title="@string/artistas"/>
 
     <item
-        android:id="@+id/menu_lugares"
-        android:title="@string/lugares"/>
-    <item
         android:id="@+id/menu_entradas"
         android:title="@string/entradas"/>
 

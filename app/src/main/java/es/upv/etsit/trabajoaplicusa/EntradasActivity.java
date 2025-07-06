@@ -48,14 +48,6 @@ public class EntradasActivity extends AppCompatActivity implements SectionConten
     private void cargarEntradas() {
 
         listaEntradas.add(new SectionContent(
-                "Festival Internacional de Benicàssim",
-                "Del 18 al 21 de Julio 2025 • Benicàssim, Castellón",
-                "drawable/fib_festival", // o URL si tienes
-                "https://www.fiberfib.com/entradas",
-                "Desde 89€"
-        ));
-
-        listaEntradas.add(new SectionContent(
                 "Mad Cool Festival",
                 "Del 10 al 12 de Julio 2025 • Madrid",
                 "drawable/madcool_festival",
