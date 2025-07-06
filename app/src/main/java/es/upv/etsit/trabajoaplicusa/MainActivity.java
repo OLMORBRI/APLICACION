@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigation_view);
         btnmadcool = findViewById(R.id.btnmadcool);
         btnprimavera = findViewById(R.id.btnprimavera);
-        btnviña = findViewById(R.id.btnviña);
+        btnviña = findViewById(R.id.btn_vina);
         btnresurrect = findViewById(R.id.btnresurrect);
         btnarenal = findViewById(R.id.btnarenal);
         NestedScrollView scrollView = findViewById(R.id.scrollView);
@@ -75,9 +75,6 @@ public class MainActivity extends AppCompatActivity {
             case "tickets":
                 intent = new Intent(this, EntradasActivity.class);
                 break;
-            case "lugares":
-                intent = new Intent(this, LugaresActivity.class);
-                break;
             default:
                 intent = new Intent(this, ArtistasActivity.class);
                 intent.putExtra("section", section);
@@ -96,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             } else if (id == R.id.nav_artistas) {
                 openSection("artistas");
-            } else if (id == R.id.nav_lugares) {
-                startActivity(new Intent(this, LugaresActivity.class));
             } else if (id == R.id.nav_entradas) {
                 startActivity(new Intent(this, EntradasActivity.class));
             }

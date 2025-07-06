@@ -44,10 +44,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/eventos"
-                    android:textSize="24sp"
+                    android:textSize="40sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/groovetastic_free"
+                    android:fontFamily="@font/zagga_regular"
                     android:textAlignment="center"
                     android:layout_marginBottom="12dp" />
 
@@ -56,9 +56,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/eslogan"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/choretfudyngbubble_regular"
+                    android:fontFamily="@font/zagga_regular"
                     android:textAlignment="center"
                     android:lineSpacingExtra="4dp" />
 
@@ -247,7 +247,7 @@
                         android:layout_marginBottom="12dp" />
 
                     <Button
-                        android:id="@+id/btnviña"
+                        android:id="@+id/btn_vina"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/btn_evento4"

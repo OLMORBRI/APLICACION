@@ -27,11 +27,6 @@
             android:name=".EntradasActivity"
             android:parentActivityName=".MainActivity" />
 
-        <activity
-            android:name=".LugaresActivity"
-            android:parentActivityName=".MainActivity" />
-
-
 
         <activity
             android:name=".WelcomeActivity"

@@ -7,9 +7,6 @@
         android:id="@+id/nav_artistas"
         android:title="@string/artistas" />
     <item
-        android:id="@+id/nav_lugares"
-        android:title="@string/lugares" />
-    <item
         android:id="@+id/nav_entradas"
         android:title="@string/entradas" />
 </menu>
