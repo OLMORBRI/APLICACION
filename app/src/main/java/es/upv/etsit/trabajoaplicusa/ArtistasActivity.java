@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +21,8 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
     private RecyclerView recyclerViewContent;
     private SectionContentAdapter adapter;
     private String currentSection;
+    private SearchView searchView;
+    private List<SectionContent> originalContentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
         tvSectionTitle = findViewById(R.id.tituloArtistas);
         tvSectionDescription = findViewById(R.id.eslogan);
         recyclerViewContent = findViewById(R.id.recyclerViewContent);
+        searchView = findViewById(R.id.searchViewArtists);
 
         recyclerViewContent.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -76,17 +80,35 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
 
     private void loadSectionContent() {
         List<SectionContent> contentList = createArtistsList(currentSection);
+        originalContentList = new ArrayList<>(contentList);
 
         adapter = new SectionContentAdapter(contentList);
         adapter.setOnItemClickListener(this);
         recyclerViewContent.setAdapter(adapter);
 
+        setupSearch();
         updateSectionDescription(currentSection);
     }
 
     private void updateSectionDescription(String section) {
         String description = getSectionDescription(section);
         tvSectionDescription.setText(description);
+    }
+
+    private void setupSearch() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterArtists(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterArtists(newText);
+                return true;
+            }
+        });
     }
 
     private String getSectionDescription(String section) {
@@ -165,6 +187,18 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
         }
 
         return artists;
+    }
+
+    private void filterArtists(String query) {
+        if (originalContentList == null) return;
+
+        List<SectionContent> filtered = new ArrayList<>();
+        for (SectionContent sc : originalContentList) {
+            if (sc.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                filtered.add(sc);
+            }
+        }
+        adapter.updateData(filtered);
     }
 
     @Override
