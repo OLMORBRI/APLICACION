@@ -1,5 +1,7 @@
 package es.upv.etsit.trabajoaplicusa;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,7 +14,7 @@ import es.upv.etsit.trabajoaplicusa.models.SectionContent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventosActivity extends AppCompatActivity {
+public class EventosActivity extends AppCompatActivity implements SectionContentAdapter.OnItemClickListener {
 
     private Toolbar toolbar;
     private ImageView ivArtistImage;
@@ -95,6 +97,7 @@ public class EventosActivity extends AppCompatActivity {
         List<SectionContent> eventsList = createEventsList(artistName, festivalSection);
 
         adapter = new SectionContentAdapter(eventsList);
+        adapter.setOnItemClickListener(this);
         recyclerViewEvents.setAdapter(adapter);
 
         tvEventsTitle.setText("Eventos de " + (artistName != null ? artistName : "este artista"));
@@ -110,7 +113,8 @@ public class EventosActivity extends AppCompatActivity {
                 events.add(new SectionContent(
                         "Mad Cool Festival 2025",
                         "Actuación principal en el escenario Madrid\nFecha: 15 de Julio 2025\nHora: 22:00",
-                        "drawable/mad_cool"
+                        "drawable/mad_cool",
+                        "https://madcoolfestival.es/"
                 ));
                 break;
 
@@ -118,7 +122,8 @@ public class EventosActivity extends AppCompatActivity {
                 events.add(new SectionContent(
                         "Primavera Sound 2025",
                         "Concierto en el escenario Parc del Fòrum\nFecha: 3 de Junio 2025\nHora: 23:30",
-                        "drawable/primavera_sound"
+                        "drawable/primavera_sound",
+                        "https://www.primaverasound.com/"
                 ));
                 break;
 
@@ -126,7 +131,8 @@ public class EventosActivity extends AppCompatActivity {
                 events.add(new SectionContent(
                         "Arenal Sound 2025",
                         "Headliner en la playa de Burriana\nFecha: 30 de Julio 2025\nHora: 01:00",
-                        "drawable/arenal_sound"
+                        "drawable/arenal_sound",
+                        "https://www.arenalsound.com/"
                 ));
                 break;
 
@@ -134,7 +140,8 @@ public class EventosActivity extends AppCompatActivity {
                 events.add(new SectionContent(
                         "Viña Rock 2025",
                         "Concierto en el escenario principal\nFecha: 1 de Mayo 2025\nHora: 22:30",
-                        "drawable/vina_rock"
+                        "drawable/vina_rock",
+                        "https://www.vinarock.com/"
                 ));
                 break;
 
@@ -142,7 +149,8 @@ public class EventosActivity extends AppCompatActivity {
                 events.add(new SectionContent(
                         "Resurrection Fest 2025",
                         "Actuación épica en el escenario principal\nFecha: 25 de Junio 2025\nHora: 23:00",
-                        "drawable/resurrection"
+                        "drawable/resurrection",
+                        "https://www.resurrectionfest.es/"
                 ));
                 break;
 
@@ -156,6 +164,14 @@ public class EventosActivity extends AppCompatActivity {
         }
 
         return events;
+    }
+
+    @Override
+    public void onItemClick(SectionContent content, int position) {
+        if (content.getUrl() != null && !content.getUrl().isEmpty()) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(content.getUrl()));
+            startActivity(browserIntent);
+        }
     }
 
     @Override

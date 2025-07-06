@@ -185,38 +185,38 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
 
         switch (section) {
             case "mad_cool":
-                artists.add(new SectionContent("Arctic Monkeys", "Banda británica de rock alternativo", "drawable/arctic_monkeys"));
-                artists.add(new SectionContent("Billie Eilish", "Cantante y compositora estadounidense", "drawable/billie_eilish"));
-                artists.add(new SectionContent("The Killers", "Banda estadounidense de rock", "drawable/the_killers"));
-                artists.add(new SectionContent("Dua Lipa", "Cantante británica de pop", "drawable/dua_lipa"));
+                artists.add(new SectionContent("Arctic Monkeys", "Banda británica de rock alternativo", "drawable/arctic_monkeys", "mad_cool"));
+                artists.add(new SectionContent("Billie Eilish", "Cantante y compositora estadounidense", "drawable/billie_eilish", "mad_cool"));
+                artists.add(new SectionContent("The Killers", "Banda estadounidense de rock", "drawable/the_killers", "mad_cool"));
+                artists.add(new SectionContent("Dua Lipa", "Cantante británica de pop", "drawable/dua_lipa", "mad_cool"));
                 break;
 
             case "primavera_sound":
-                artists.add(new SectionContent("Rosalía", "Cantante española de flamenco urbano", "drawable/rosalia"));
-                artists.add(new SectionContent("Bad Bunny", "Reggaetonero puertorriqueño", "drawable/bad_bunny"));
-                artists.add(new SectionContent("Tame Impala", "Proyecto musical australiano", "drawable/tame_impala"));
-                artists.add(new SectionContent("Lorde", "Cantautora neozelandesa", "drawable/lorde"));
+                artists.add(new SectionContent("Rosalía", "Cantante española de flamenco urbano", "drawable/rosalia", "primavera_sound"));
+                artists.add(new SectionContent("Bad Bunny", "Reggaetonero puertorriqueño", "drawable/bad_bunny", "primavera_sound"));
+                artists.add(new SectionContent("Tame Impala", "Proyecto musical australiano", "drawable/tame_impala", "primavera_sound"));
+                artists.add(new SectionContent("Lorde", "Cantautora neozelandesa", "drawable/lorde", "primavera_sound"));
                 break;
 
             case "arenal_sound":
-                artists.add(new SectionContent("C. Tangana", "Rapero y cantante español", "drawable/c_tangana"));
-                artists.add(new SectionContent("Nathy Peluso", "Cantante argentina", "drawable/nathy_peluso"));
-                artists.add(new SectionContent("Vetusta Morla", "Banda española de rock", "drawable/vetusta_morla"));
-                artists.add(new SectionContent("Love of Lesbian", "Banda catalana de indie pop", "drawable/love_of_lesbian"));
+                artists.add(new SectionContent("C. Tangana", "Rapero y cantante español", "drawable/c_tangana", "arenal_sound"));
+                artists.add(new SectionContent("Nathy Peluso", "Cantante argentina", "drawable/nathy_peluso", "arenal_sound"));
+                artists.add(new SectionContent("Vetusta Morla", "Banda española de rock", "drawable/vetusta_morla", "arenal_sound"));
+                artists.add(new SectionContent("Love of Lesbian", "Banda catalana de indie pop", "drawable/love_of_lesbian", "arenal_sound"));
                 break;
 
             case "viña_rock":
-                artists.add(new SectionContent("Mägo de Oz", "Banda española de folk metal", "drawable/mago_de_oz"));
-                artists.add(new SectionContent("Extremoduro", "Banda española de rock", "drawable/extremoduro"));
-                artists.add(new SectionContent("Marea", "Banda española de rock", "drawable/marea"));
-                artists.add(new SectionContent("Platero y Tú", "Banda española de rock", "drawable/platero_y_tu"));
+                artists.add(new SectionContent("Mägo de Oz", "Banda española de folk metal", "drawable/mago_de_oz", "viña_rock"));
+                artists.add(new SectionContent("Extremoduro", "Banda española de rock", "drawable/extremoduro", "viña_rock"));
+                artists.add(new SectionContent("Marea", "Banda española de rock", "drawable/marea", "viña_rock"));
+                artists.add(new SectionContent("Platero y Tú", "Banda española de rock", "drawable/platero_y_tu", "viña_rock"));
                 break;
 
             case "resurrection":
-                artists.add(new SectionContent("Metallica", "Banda estadounidense de metal", "drawable/metallica"));
-                artists.add(new SectionContent("Iron Maiden", "Banda británica de heavy metal", "drawable/iron_maiden"));
-                artists.add(new SectionContent("Slipknot", "Banda estadounidense de metal", "drawable/slipknot"));
-                artists.add(new SectionContent("System of a Down", "Banda estadounidense de metal alternativo", "drawable/system_of_a_down"));
+                artists.add(new SectionContent("Metallica", "Banda estadounidense de metal", "drawable/metallica", "resurrection"));
+                artists.add(new SectionContent("Iron Maiden", "Banda británica de heavy metal", "drawable/iron_maiden", "resurrection"));
+                artists.add(new SectionContent("Slipknot", "Banda estadounidense de metal", "drawable/slipknot", "resurrection"));
+                artists.add(new SectionContent("System of a Down", "Banda estadounidense de metal alternativo", "drawable/system_of_a_down", "resurrection"));
                 break;
 
             case "artistas":
@@ -255,7 +255,13 @@ public class ArtistasActivity extends AppCompatActivity implements SectionConten
         intent.putExtra("artist_name", artistName);
         intent.putExtra("artist_description", content.getDescription());
         intent.putExtra("artist_image", content.getImageUrl());
-        intent.putExtra("festival_section", currentSection);
+
+        String section = currentSection;
+        if (content.getUrl() != null && !content.getUrl().isEmpty()) {
+            section = content.getUrl();
+        }
+
+        intent.putExtra("festival_section", section);
         startActivity(intent);
     }
 
