@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigation_view);
         btnmadcool = findViewById(R.id.btnmadcool);
         btnprimavera = findViewById(R.id.btnprimavera);
-        btnviña = findViewById(R.id.btnviña);
+        btnviña = findViewById(R.id.btn_vina);
         btnresurrect = findViewById(R.id.btnresurrect);
         btnarenal = findViewById(R.id.btnarenal);
         NestedScrollView scrollView = findViewById(R.id.scrollView);

@@ -80,7 +80,11 @@ public class EventosActivity extends AppCompatActivity {
                 int resourceId = getResources().getIdentifier(drawableName, "drawable", getPackageName());
                 if (resourceId != 0) {
                     ivArtistImage.setImageResource(resourceId);
+                } else {
+                    ivArtistImage.setImageResource(R.drawable.ic_artista);
                 }
+            } else {
+                ivArtistImage.setImageResource(R.drawable.ic_artista);
             }
         } else {
             ivArtistImage.setVisibility(ImageView.GONE);
@@ -106,7 +110,7 @@ public class EventosActivity extends AppCompatActivity {
                 events.add(new SectionContent(
                         "Mad Cool Festival 2025",
                         "Actuación principal en el escenario Madrid\nFecha: 15 de Julio 2025\nHora: 22:00",
-                        "drawable/mad_cool_stage"
+                        "drawable/mad_cool"
                 ));
                 events.add(new SectionContent(
                         "Meet & Greet",
@@ -119,7 +123,7 @@ public class EventosActivity extends AppCompatActivity {
                 events.add(new SectionContent(
                         "Primavera Sound 2025",
                         "Concierto en el escenario Parc del Fòrum\nFecha: 3 de Junio 2025\nHora: 23:30",
-                        "drawable/primavera_stage"
+                        "drawable/primavera_sound"
                 ));
                 events.add(new SectionContent(
                         "Sesión Acústica",
@@ -132,7 +136,7 @@ public class EventosActivity extends AppCompatActivity {
                 events.add(new SectionContent(
                         "Arenal Sound 2025",
                         "Headliner en la playa de Burriana\nFecha: 30 de Julio 2025\nHora: 01:00",
-                        "drawable/arenal_stage"
+                        "drawable/arenal_sound"
                 ));
                 break;
 
@@ -140,7 +144,7 @@ public class EventosActivity extends AppCompatActivity {
                 events.add(new SectionContent(
                         "Viña Rock 2025",
                         "Concierto en el escenario principal\nFecha: 1 de Mayo 2025\nHora: 22:30",
-                        "drawable/vina_stage"
+                        "drawable/vina_rock"
                 ));
                 events.add(new SectionContent(
                         "Firma de Autógrafos",
@@ -153,7 +157,7 @@ public class EventosActivity extends AppCompatActivity {
                 events.add(new SectionContent(
                         "Resurrection Fest 2025",
                         "Actuación épica en el escenario principal\nFecha: 25 de Junio 2025\nHora: 23:00",
-                        "drawable/resurrection_stage"
+                        "drawable/resurrection"
                 ));
                 events.add(new SectionContent(
                         "Masterclass",
